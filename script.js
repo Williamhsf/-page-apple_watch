@@ -1,13 +1,49 @@
-const imagemVisualizacao = document.querySelector("#visializacao img");
-let numImagemSelecionada = 1;
+//const imagemVisualizacao = document.getElementById("visializacao");
+const imagemVisualizacao = document.querySelector("#visualizacao img");
+const tituloProduto = document.querySelector("h1");
 
-function atualizarImagemSelecionada() {
-    const opcaoImagemSelecionada = document.querySelector('[name="opcao-imagem"]:checked');
-    console.log(opcaoImagemSelecionada);
-    imagemVisualizacao.scr = "./imagens/opcoes-cores/imagens-azul-inverno/imagem-" +
-    numImagemSelecionada + ".jpeg";
+const opcoesTamanho = ["41 mm", "45 mm"];
+
+//console.log(opcoesTamanho[1])
+
+let numImagemSelecionada = 1;
+let numTamanhoSelecionado = 1;
+//console.log(imagemVisualizacao)
+
+function atualizarTamanho(){
+    const opcaoTamanhoSelecionado = document
+        .querySelector('[name="opcao-tamanho"]:checked')
+        .id.charAt(0);
+        
+    numTamanhoSelecionado = opcaoTamanhoSelecionado;
+    
+    const tamanhoRelogio = opcoesTamanho[numTamanhoSelecionado]; 
+
+    tituloProduto.innerText =
+    `Pulseira loop esportiva azul-inverno para caixa de ${[tamanhoRelogio]}`;
+
+    if(tamanhoRelogio === "41 mm"){
+        imagemVisualizacao.classList.add("caixa-pequena");
+    } else {
+        imagemVisualizacao.classList.remove("caixa-pequena");
+    }
 }
 
-atualizarImagemSelecionada();
+function atualizarImagemSelecionada() {
+    const opcaoImagemSelecionada = document
+        .querySelector('[name="opcao-imagem"]:checked')
+        .id.charAt(0);
+    
+    numImagemSelecionada = opcaoImagemSelecionada;
 
-//30 min
+    // console.log(opcaoImagemSelecionada);
+    
+    imagemVisualizacao.src =
+        "./imagens/opcoes-cores/imagens-azul-inverno/imagem-" +
+        numImagemSelecionada + 
+        ".jpeg";
+}
+
+// atualizarImagemSelecionada();
+
+//1:06:31 min
