@@ -1,14 +1,49 @@
 //const imagemVisualizacao = document.getElementById("visializacao");
 const imagemVisualizacao = document.querySelector("#visualizacao img");
 const tituloProduto = document.querySelector("h1");
+const nomeCorSelecionada = document.querySelector("#nome-cor-selecionada");
+const imagemMiniatura0 = document.querySelector('[for="0-imagem"] img')
+const imagemMiniatura1 = document.querySelector('[for="1-imagem"] img')
+const imagemMiniatura2 = document.querySelector('[for="2-imagem"] img')
 
+console.log(imagemMiniatura0)
 const opcoesTamanho = ["41 mm", "45 mm"];
-
-//console.log(opcoesTamanho[1])
+const opcoesCores = [
+    "Verde-Cipreste", 
+    "Azul-Inverno", 
+    "Meia-Noite", 
+    "Estelar", 
+    "Rosa-Claro"
+];
 
 let numImagemSelecionada = 1;
 let numTamanhoSelecionado = 1;
-//console.log(imagemVisualizacao)
+let numCorSelecionada = 1;
+
+function atualizarCorSelecionada() {
+    const opcaoCorSelecionada = document
+        .querySelector('[name="opcao-cor"]:checked')
+        .id.charAt(0);
+
+    numCorSelecionada = opcaoCorSelecionada;
+    const nomeCor = opcoesCores[numCorSelecionada];
+
+    console.log(nomeCor);
+    tituloProduto.innerText =
+    `Pulseira loop esportiva ${nomeCor.toLowerCase()} para caixa de ${opcoesTamanho[numTamanhoSelecionado]} `
+
+    nomeCorSelecionada.innerText = `Cor - ${nomeCor}`;
+
+    imagemVisualizacao.src = 
+    `./imagens/opcoes-cores/imagens-${nomeCor.toLowerCase()}/imagem-${numImagemSelecionada}.jpeg`
+
+    imagemMiniatura0.src =
+    `./imagens/opcoes-cores/imagens-${nomeCor.toLowerCase()}/imagem-0.jpeg`
+    imagemMiniatura1.src =
+    `./imagens/opcoes-cores/imagens-${nomeCor.toLowerCase()}/imagem-1.jpeg`
+    imagemMiniatura2.src =
+    `./imagens/opcoes-cores/imagens-${nomeCor.toLowerCase()}/imagem-2.jpeg`
+}
 
 function atualizarTamanho(){
     const opcaoTamanhoSelecionado = document
@@ -20,7 +55,7 @@ function atualizarTamanho(){
     const tamanhoRelogio = opcoesTamanho[numTamanhoSelecionado]; 
 
     tituloProduto.innerText =
-    `Pulseira loop esportiva azul-inverno para caixa de ${[tamanhoRelogio]}`;
+    `Pulseira loop esportiva ${opcoesCores[numCorSelecionada].toLowerCase()} para caixa de ${[tamanhoRelogio]}`;
 
     if(tamanhoRelogio === "41 mm"){
         imagemVisualizacao.classList.add("caixa-pequena");
@@ -35,15 +70,9 @@ function atualizarImagemSelecionada() {
         .id.charAt(0);
     
     numImagemSelecionada = opcaoImagemSelecionada;
-
-    // console.log(opcaoImagemSelecionada);
     
     imagemVisualizacao.src =
-        "./imagens/opcoes-cores/imagens-azul-inverno/imagem-" +
-        numImagemSelecionada + 
-        ".jpeg";
+    `./imagens/opcoes-cores/imagens-${opcoesCores[numCorSelecionada].toLowerCase()}/imagem-${numImagemSelecionada}.jpeg`;
 }
 
 // atualizarImagemSelecionada();
-
-//1:06:31 min
