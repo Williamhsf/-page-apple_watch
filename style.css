@@ -25,28 +25,18 @@ nav {
   font-size: 13px;
 }
 
-nav ul {
-  display: flex;
-  justify-content: space-between;
-  /* max-width: 1000px;
-  margin: 0 auto; */
-  align-items: center;
-}
-
 ul {
   list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 li {
   cursor: pointer;
 }
 
-svg {
-  display: block;
-}
-
 main {
-  /* max-width: 1000px; */
   margin-bottom: 48px;
 }
 
@@ -93,12 +83,6 @@ a:hover {
     width: 25px;
   }
 }
-
-/* Nesting ou Aninhamento */
-
-/* #selo-carbono img {
-  width: 25px;
-} */
 
 input[type="radio"] {
   display: none;
